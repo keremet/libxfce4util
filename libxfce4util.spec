@@ -1,5 +1,5 @@
 Name: libxfce4util
-Version: 4.8.2
+Version: 4.9.0
 Release: alt1
 
 Summary: Utility library for the Xfce desktop environment
@@ -60,6 +60,9 @@ Header files for the %name library.
 %_libdir/*.so
 
 %changelog
+* Thu Mar 29 2012 Mikhail Efremov <sem@altlinux.org> 4.9.0-alt1
+- Updated to 4.9.0.
+
 * Fri Oct 07 2011 Mikhail Efremov <sem@altlinux.org> 4.8.2-alt1
 - Drop obsoleted patches.
 - Updated to 4.8.2.
