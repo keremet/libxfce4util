@@ -10,6 +10,7 @@ Url: http://www.xfce.org/
 
 Packager: XFCE Team <xfce@packages.altlinux.org>
 
+# Upstream: git://git.xfce.org/xfce/libxfce4util
 Source: %name-%version.tar
 
 BuildRequires(pre): rpm-build-licenses
