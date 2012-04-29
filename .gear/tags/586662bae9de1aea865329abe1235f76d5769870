@@ -1,0 +1,8 @@
+object a8404c3f2cda27750cd5cb099f8d3c7042372017
+type commit
+tag libxfce4util-4.10.0
+tagger Nick Schermer <nick@xfce.org> 1335641647 +0200
+
+4.10.0
+======
+- Translation updates: Romanian, Chinese (China).

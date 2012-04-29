@@ -1,9 +1,0 @@
-object f67898683a99f86bddd015acbfb367dfc12517a3
-type commit
-tag libxfce4util-4.9.1
-tagger Nick Schermer <nick@xfce.org> 1334350149 +0200
-
-4.9.1
-=====
-- Bump glib to 2.24.
-- Translation updates: German, Japanese, Korean, Portuguese.
