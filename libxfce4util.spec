@@ -58,6 +58,7 @@ Header files for the %name library.
 
 %files devel
 %doc %_datadir/gtk-doc/html/%name
+%dir %_includedir/xfce4/
 %_includedir/xfce4/libxfce4util
 %_pkgconfigdir/*.pc
 %_libdir/*.so
