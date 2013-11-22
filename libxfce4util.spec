@@ -8,7 +8,7 @@ License: %lgpl2plus
 Group: Graphical desktop/XFce
 Url: http://www.xfce.org/
 
-Packager: XFCE Team <xfce@packages.altlinux.org>
+Packager: Xfce Team <xfce@packages.altlinux.org>
 
 # Upstream: git://git.xfce.org/xfce/libxfce4util
 Source: %name-%version.tar
@@ -20,7 +20,7 @@ BuildPreReq: rpm-build-xfce4 xfce4-dev-tools
 BuildRequires: glib2-devel gtk-doc intltool
 
 %description
-Basic utility non-GUI functions for XFce.
+Basic utility non-GUI functions for Xfce.
 
 %description -l ru_RU.UTF-8
 Основные (не графические) утилиты Xfce.
