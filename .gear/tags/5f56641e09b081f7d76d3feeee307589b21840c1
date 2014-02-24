@@ -1,0 +1,13 @@
+object 717be39f44594fa012a625d562f5397b14892858
+type commit
+tag libxfce4util-4.11.0
+tagger Nick Schermer <nick@xfce.org> 1393108862 +0100
+
+- Autotools updates.
+- Don't use freed rc file to avoid crash (bug #9026).
+- Remove unused or unrequired API functions: xfce_strjoin,
+  xfce_gethostname, xfce_putenv, xfce_setenv, xfce_unsetenv.
+- Translation updates: Arabic, Bulgarian, Welsh, Dzongkha, English
+  (Australia), Georgian, Korean, Macedonian, Malay, Dutch (Flemish),
+  Occitan (post 1500), Slovenian, Serbian, Thai, Tagalog (Philippines),
+  Uyghur, Chinese (Hong Kong).
