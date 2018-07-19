@@ -46,7 +46,7 @@ Header files for the %name library.
 	--disable-static \
 	--enable-maintainer-mode \
 	--enable-gtk-doc \
-	--enable-debug=no
+	--enable-debug=minimum
 %make_build
 
 %install
