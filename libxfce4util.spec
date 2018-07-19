@@ -19,6 +19,8 @@ BuildPreReq: rpm-build-xfce4 xfce4-dev-tools
 # Automatically added by buildreq on Wed Jan 13 2010
 BuildRequires: glib2-devel gtk-doc intltool
 
+%define _unpackaged_files_terminate_build 1
+
 %description
 Basic utility non-GUI functions for Xfce.
 
