@@ -1,6 +1,38 @@
+4.13.2
+======
+[Please note that this is a development release.]
+- Add VAPIGEN for vala binding generation.
+- Fix make distcheck build
+- Better documentation processing (migrate away from sgml templates)
+- Allow language-specific keys before language-neutral ones (some applications names were not
+  localized in applications menu) (bug #13979)
+- Translation updates: Arabic, Asturian, Bulgarian, Bengali, Catalan, Czech, Welsh, Danish, German,
+  Greek, English (Australia), English (United Kingdom), Spanish, Estonian, Basque, Finnish,
+  French, Galician, Hebrew, Croatian, Hungarian, Indonesian, Icelandic, Italian, Japanese, Kazakh,
+  Korean, Lithuanian, Latvian, Malay, Norwegian Bokmål, Dutch, Norwegian Nynorsk,
+  Occitan (post 1500), Panjabi (Punjabi), Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Sinhala, Slovak, Albanian, Serbian, Swedish, Thai, Turkish, Uighur, Ukrainian, Urdu, Urdu
+  (Pakistan), Uzbek, Chinese (China), Chinese (Hong Kong), Chinese (Taiwan)
+
+4.13.1
+======
+[Please note that this is a development release.]
+- Fix a minor typo: ment → meant
+- Fix some autotools warnings, default debug to yes
+- Fix duplicate DISTCHECK_CONFIGURE_FLAGS
+- Improve gobject-introspection annotations
+
+4.13.0
+======
+[Please note that this is a development release.]
+- Fix abicheck to handle ppc64 architecture
+- Add support for GOBJECT-INTROSPECTION Bug #12159
+- Translation updates: ast bg ca da gl he hr lt sv 
+
 4.12.1
 ======
 - Set xfce_version_string to 4.12 (oops!).
+
 4.12.0
 ======
 - Update libtool version to reflect dropped symbols (bug #10737)

@@ -1,6 +1,6 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2002-2014
+dnl Copyright (c) 2002-2017
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
@@ -12,8 +12,8 @@ dnl *** Version information ***
 dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
 m4_define([libxfce4util_version_major], [4])
-m4_define([libxfce4util_version_minor], [12])
-m4_define([libxfce4util_version_micro], [1])
+m4_define([libxfce4util_version_minor], [13])
+m4_define([libxfce4util_version_micro], [2])
 m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version_build], [@REVISION@])
 m4_define([libxfce4util_version_tag], [])
@@ -32,12 +32,12 @@ dnl # YOU ARE DOING.
 dnl ********************************************
 dnl *** Full debug support for GIT snapshots ***
 dnl ********************************************
-m4_define([libxfce4util_debug_default], [ifelse(libxfce4util_version_tag(), [git], [full], [minimum])])
+m4_define([libxfce4util_debug_default], [ifelse(libxfce4util_version_tag(), [git], [yes], [minimum])])
 
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2002-2011
+AC_COPYRIGHT([Copyright (c) 2002-2018
         The Xfce development team. All rights reserved.])
 AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
@@ -49,6 +49,7 @@ dnl ***************************
 LIBXFCE4UTIL_VERSION=libxfce4util_version()
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIRS([m4])
 AM_MAINTAINER_MODE()
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
@@ -88,7 +89,7 @@ dnl ********************************
 AC_PROG_CC()
 AM_PROG_CC_C_O()
 AC_PROG_INSTALL()
-AC_PROG_INTLTOOL([0.31], [no-xml])
+IT_PROG_INTLTOOL([0.35.0])
 AC_CHECK_PROGS([PERL], [perl5 perl])
 
 dnl **************************
@@ -112,6 +113,11 @@ dnl *** Check for i18n support ***
 dnl ******************************
 XDT_I18N([@LINGUAS@])
 
+dnl ***********************************
+dnl *** Check for GObject installed ***
+dnl ***********************************
+XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.30.0])
+
 dnl ********************************
 dnl *** Check for GLib installed ***
 dnl ********************************
@@ -121,6 +127,16 @@ dnl *************************
 dnl *** Check for gtk-doc ***
 dnl *************************
 GTK_DOC_CHECK([1.0])
+
+dnl ***************************************
+dnl *** Check for gobject-introspection ***
+dnl ***************************************
+GOBJECT_INTROSPECTION_CHECK([1.30.0])
+
+dnl *************************
+dnl *** Check for vapigen ***
+dnl *************************
+VAPIGEN_CHECK()
 
 dnl ****************************************************************************
 dnl *** Check for a broken putenv(3) implementation that requires strings    ***
@@ -132,7 +148,7 @@ AC_MSG_CHECKING([whether putenv() implementation is broken])
 AC_ARG_WITH([broken-putenv],
   [  --with-broken-putenv=[[auto/yes/no]] broken putenv(3) [default=auto]])
 if test x"$with_broken_putenv" != x"yes" -a x"$with_broken_putenv" != x"no"; then
-  AC_RUN_IFELSE([
+  AC_RUN_IFELSE([AC_LANG_SOURCE(
   #include <stdlib.h>
   #include <string.h>
   int main(int argc, char *argv[])
@@ -142,7 +158,7 @@ if test x"$with_broken_putenv" != x"yes" -a x"$with_broken_putenv" != x"no"; the
     putenv(buffer);
     strcpy(buffer, "foo=rab");
     return(strcmp(getenv("foo"), "bar") == 0 ? 0 : 1);
-  }],
+  })],
   [with_broken_putenv=no],
   [with_broken_putenv=yes],
   [with_broken_putenv=cross])
@@ -176,7 +192,7 @@ if test x"$enable_visibility" != x"no"; then
   save_CFLAGS="$CFLAGS"
   CFLAGS="$CFLAGS -Wall -Werror"
   AC_MSG_CHECKING([whether $CC supports the GNUC visibility attribute])
-  AC_COMPILE_IFELSE(AC_LANG_SOURCE(
+  AC_COMPILE_IFELSE([AC_LANG_SOURCE(
   [
     void test_default (void);
     void test_hidden (void);
@@ -185,7 +201,7 @@ if test x"$enable_visibility" != x"no"; then
     void __attribute__ ((visibility("hidden"))) test_hidden (void) {}
 
     int main (int argc, char **argv) { test_default (); test_hidden (); return 0; }
-  ]),
+  ])],
   [
     have_gnuc_visibility=yes
     AC_MSG_RESULT([yes])

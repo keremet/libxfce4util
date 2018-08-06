@@ -19,6 +19,14 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-resource
+ * @title: Resource lookup functions
+ * @short_description: Resource lookup functions
+ *
+ * Resource lookup functions
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -409,7 +417,7 @@ _res_match_path (const gchar *path,
  *
  * The returned list must be freed using g_strfreev().
  *
- * Return value: list of possible directories for @type.
+ * Return value: (transfer full): list of possible directories for @type.
  *
  * Since: 4.2
  **/
@@ -460,7 +468,7 @@ xfce_resource_dirs (XfceResourceType type)
  * The caller is responsible to free the returned string using g_free()
  * when no longer needed.
  *
- * Return value: the absolute path to the first file or directory in the
+ * Return value: (transfer full): the absolute path to the first file or directory in the
  *               search path, that matches @filename or %NULL if no such
  *               file or directory could be found.
  *
@@ -513,7 +521,7 @@ xfce_resource_lookup (XfceResourceType type,
  * The caller is responsible to free the returned string array using g_strfreev()
  * when no longer needed.
  *
- * Return value:
+ * Return value: (transfer full): list of possible resources for @type.
  *
  * Since: 4.2
  **/
@@ -589,7 +597,7 @@ xfce_resource_lookup_all (XfceResourceType type,
  * Example: xfce_resource_match (XFCE_RESOURCE_CONFIG, "foo/bar*") will probably
  * return ("foo/bar", "foo/barbaz", ...).
  *
- * Return value: string array of all the relative paths whose names matches the
+ * Return value: (transfer full): string array of all the relative paths whose names matches the
  *               given @pattern. The return value has to be freed using
  *               g_strfreev() when no longer needed.
  *
@@ -631,15 +639,14 @@ xfce_resource_match (XfceResourceType type,
  * xfce_resource_match_custom:
  * @type      : type of the resource to locate directories for.
  * @unique    : if %TRUE, only return items which have unique suffixes.
- * @func      :
- * @user_data :
+ * @func      : (scope call) : callback to determine if there was a match
+ * @user_data : caller defined data
  *
  * Yet to be implemented!
  *
- * The caller is responsible to free the returned string array using g_strfreev()
- * when no longer needed.
  *
- * Return value:
+ * Return value: (transfer full): The caller is responsible to free
+ *          the returned string array using g_strfreev() when no longer needed.
  *
  * Since: 4.2
  **/
@@ -752,7 +759,7 @@ xfce_resource_pop_path (XfceResourceType type)
  * the base path for saving files of the specified @type, though normally
  * you should not need this.
  *
- * Return value: the path where resources of the specified @type should be
+ * Return value: (transfer full): the path where resources of the specified @type should be
  *               saved or %NULL on error. The returned string should be freed
  *               when no longer needed.
  *

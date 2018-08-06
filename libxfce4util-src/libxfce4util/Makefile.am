@@ -1,5 +1,7 @@
 # $Id$
 
+CLEANFILES =
+
 AM_CPPFLAGS =								\
 	-I$(top_srcdir)							\
 	-DDEFAULT_XDG_CACHE_HOME=\"~/.cache\"				\
@@ -63,7 +65,8 @@ libxfce4util_la_SOURCES =						\
 	xfce-utf8.c
 
 libxfce4util_la_CFLAGS = 						\
-	$(GLIB_CFLAGS)
+	$(GLIB_CFLAGS) \
+	$(GOBJECT_CFLAGS)
 
 libxfce4util_la_LDFLAGS =						\
 	-export-dynamic							\
@@ -72,11 +75,46 @@ libxfce4util_la_LDFLAGS =						\
 	-no-undefined
 
 libxfce4util_la_LIBADD =						\
-	$(GLIB_LIBS)
+	$(GLIB_LIBS) \
+	$(GOBJECT_LIBS)
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libxfce4util-1.0.pc
 
+
+include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS =
+INTROSPECTION_SCANNER_ENV = CC="$(CC)"
+INTROSPECTION_SCANNER_ARGS = \
+	--add-include-path=$(srcdir) \
+	--warn-all \
+	--identifier-prefix=Xfce \
+	--identifier-prefix=xfce \
+	--identifier-prefix=libxfce \
+	--c-include=libxfce4util.h
+INTROSPECTION_COMPILER_ARGS = \
+	--includedir=$(srcdir) \
+	--includedir=.
+
+if HAVE_INTROSPECTION
+introspection_sources = $(libxfce4util_la_SOURCES)
+
+libxfce4util-1.0.gir: libxfce4util.la Makefile
+libxfce4util_1_0_gir_INCLUDES = GObject-2.0 GLib-2.0
+libxfce4util_1_0_gir_CFLAGS = $(AM_CPPFLAGS)
+libxfce4util_1_0_gir_LIBS = libxfce4util.la
+libxfce4util_1_0_gir_FILES = $(introspection_sources)
+libxfce4util_1_0_gir_EXPORT_PACKAGES = libxfce4util-1.0
+INTROSPECTION_GIRS += libxfce4util-1.0.gir
+
+girdir = $(datadir)/gir-1.0
+gir_DATA = $(INTROSPECTION_GIRS)
+
+typelibdir = $(libdir)/girepository-1.0
+typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+
+CLEANFILES += $(gir_DATA) $(typelib_DATA)
+endif
 
 ##
 ## Rules to auto-generate built sources
@@ -88,7 +126,7 @@ pkgconfig_DATA = libxfce4util-1.0.pc
 ## files as part of the dist tarball.
 ##
 if MAINTAINER_MODE
-CLEANFILES =								\
+CLEANFILES +=								\
 	actual-abi							\
 	expected-abi
 
@@ -103,6 +141,7 @@ libxfce4util-alias.h: make-libxfce4util-alias.pl libxfce4util.symbols
 
 libxfce4util-aliasdef.c: make-libxfce4util-alias.pl libxfce4util.symbols
 	$(AM_V_GEN) $(PERL) $(srcdir)/make-libxfce4util-alias.pl -def < $(srcdir)/libxfce4util.symbols > libxfce4util-aliasdef.c
+
 endif
 
 # required for gtk-doc
@@ -114,6 +153,25 @@ EXTRA_DIST =								\
 	libxfce4util-alias.h						\
 	libxfce4util-aliasdef.c						\
 	make-libxfce4util-alias.pl
+
+if ENABLE_VAPIGEN
+-include $(VAPIGEN_MAKEFILE)
+
+libxfce4util-1.0.vapi: libxfce4util-1.0.gir
+
+VAPIGEN_VAPIS = libxfce4util-1.0.vapi
+VAPIGEN_GIRDIRS = $(prefix)/share/gir-1.0
+
+## libxfce4util_1_0_vapi_DEPS = libxfce4util-1.0
+libxfce4util_1_0_vapi_METADATADIRS = $(srcdir)
+libxfce4util_1_0_vapi_FILES = libxfce4util-1.0.gir
+
+vapidir = $(datadir)/vala/vapi
+vapi_DATA = $(VAPIGEN_VAPIS)
+## $(VAPIGEN_VAPIS:.vapi=.deps)
+
+EXTRA_DIST += libxfce4util-1.0.metadata
+endif
 
 if HAVE_GNUC_VISIBILITY
 TESTS = abicheck.sh

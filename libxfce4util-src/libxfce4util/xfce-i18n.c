@@ -20,6 +20,17 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-i18n
+ * @title: Internationalization
+ * @short_description: Internationalization and Localization Support Functions
+ * @see_also: https://developer.gnome.org/glib/stable/glib-I18N.html
+ *
+ * Provides functions to aid application developers making their software
+ * localizable. It extends the basic internationalization support provided
+ * by GLib 2.4 (and newer).
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -261,9 +272,9 @@ xfce_get_dir_localized_r (gchar *buffer, gsize length, const gchar *directory)
  * xfce_get_path_localized:
  * @dst      : destination buffer.
  * @size     : size of @dst in bytes.
- * @paths    :
- * @filename :
- * @test     :
+ * @paths    : the path
+ * @filename : the filename
+ * @test     : test
  *
  * @paths is a ':'-separated list of pathnames.
  *
@@ -277,8 +288,7 @@ xfce_get_dir_localized_r (gchar *buffer, gsize length, const gchar *directory)
  *
  *  /usr/local/lib/%L/%F:/usr/local/share/%N/%l/%F
  *
- * Return value:
- **/
+ */
 gchar*
 xfce_get_path_localized (gchar       *dst,
                          gsize        size,

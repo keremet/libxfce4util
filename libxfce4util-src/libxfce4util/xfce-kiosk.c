@@ -19,6 +19,14 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-kiosk
+ * @title: Xfce Kiosk functions
+ * @short_description: Xfce Kiosk mode support functions.
+ *
+ * This module provides a simple Kiosk mode for Xfce.
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -59,6 +67,8 @@
 
 struct _XfceKiosk
 {
+  GObject __parent__;
+
   gchar  *module_name;
   XfceRc *module_rc;
 };
@@ -67,8 +77,8 @@ struct _XfceKiosk
 static const gchar *xfce_kiosk_lookup  (const XfceKiosk *kiosk,
                                         const gchar     *capability);
 static gboolean     xfce_kiosk_chkgrp  (const gchar     *group);
-static void         xfce_kiosk_init    (void);
 static time_t       mtime              (const gchar     *path);
+static void         xfce_kiosk_finalize (GObject        *object);
 
 
 static gchar        *usrname = NULL;
@@ -77,15 +87,26 @@ static time_t        kiosktime = 0;
 static const gchar  *kioskdef = NULL;
 static XfceRc       *kioskrc = NULL;
 
-
+G_DEFINE_TYPE (XfceKiosk, xfce_kiosk, G_TYPE_OBJECT)
 G_LOCK_DEFINE_STATIC (kiosk_lock);
 
 
+static void
+xfce_kiosk_class_init (XfceKioskClass *klass)
+{
+  GObjectClass *gobject_class;
+
+  gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class->finalize = xfce_kiosk_finalize;
+}
+
 /**
- * xfce_kiosk_new:
- * @module:
+ * xfce_kiosk_new: (constructor)
+ * @module: The Xfce project to query about
  *
- * FIXME
+ * Creates and returns a new instance of #XfceKiosk.
+ *
+ * Return value: (transfer full): a new instance of #XfceKiosk.
  *
  * Since: 4.2
  **/
@@ -96,13 +117,11 @@ xfce_kiosk_new (const gchar *module)
   gchar      path[1024];
 
   g_return_val_if_fail (module != NULL, NULL);
-  g_return_val_if_fail (strcmp (module, "General") != 0, NULL);
-
-  xfce_kiosk_init ();
+  g_return_val_if_fail (g_strcmp0 (module, "General") != 0, NULL);
 
   g_snprintf (path, 1024, "%s/%s.kioskrc", KIOSKDIR, module);
 
-  kiosk               = g_new (XfceKiosk, 1);
+  kiosk               = g_object_new (XFCE_TYPE_KIOSK, NULL);
   kiosk->module_name  = g_strdup (module);
   kiosk->module_rc    = xfce_rc_simple_open (path, TRUE);
 
@@ -179,23 +198,34 @@ xfce_kiosk_query (const XfceKiosk *kiosk,
 }
 
 
+static void
+xfce_kiosk_finalize (GObject *object)
+{
+  XfceKiosk *kiosk = XFCE_KIOSK (object);
+
+  g_return_if_fail (kiosk != NULL);
+
+  if (kiosk->module_rc != NULL)
+    xfce_rc_close (kiosk->module_rc);
+  g_free (kiosk->module_name);
+}
+
+
 /**
  * xfce_kiosk_free:
  * @kiosk: A #XfceKiosk.
  *
  * Frees the @kiosk object.
+ * In 4.13 and above, this is equivalent to calling g_clear_object.
  *
  * Since: 4.2
  */
 void
 xfce_kiosk_free (XfceKiosk *kiosk)
 {
-  g_return_if_fail (kiosk != NULL);
-
-  if (kiosk->module_rc != NULL)
-    xfce_rc_close (kiosk->module_rc);
-  g_free (kiosk->module_name);
-  g_free (kiosk);
+  /* finalize takes care of things in case the consumer calls unref
+   * themselves instead of this function */
+  g_clear_object (&kiosk);
 }
 
 
@@ -243,7 +273,7 @@ xfce_kiosk_chkgrp (const gchar *group)
 
 
 static void
-xfce_kiosk_init (void)
+xfce_kiosk_init (XfceKiosk *kiosk)
 {
   struct passwd *pw;
   struct group  *gr;
