@@ -1,0 +1,9 @@
+object 99d8ea28a6900ad081a53419fc1a2006bfea0220
+type commit
+tag libxfce4util-4.13.4
+tagger Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at> 1561929235 +0200
+
+4.13.4
+======
+- Bump the Xfce version to 4.14pre2
+- Translation Updates: Danish, Galician
