@@ -30,7 +30,7 @@ Basic utility non-GUI functions for Xfce.
 %package devel
 Summary: Development files for %name
 Group: Development/C
-PreReq: %name = %version-%release
+Requires: %name = %version-%release
 
 %description devel
 Header files for the %name library.
