@@ -3,7 +3,7 @@
 
 Name: libxfce4util
 Version: 4.13.4
-Release: alt1
+Release: alt2
 
 Summary: Utility library for the Xfce desktop environment
 Summary(ru_RU.UTF-8): Библиотека утилит для рабочего стола Xfce
@@ -117,6 +117,10 @@ Vala bindings for %name.
 %endif
 
 %changelog
+* Fri Jul 05 2019 Mikhail Efremov <sem@altlinux.org> 4.13.4-alt2
+- Enable vala support.
+- Enable GObject introspection support.
+
 * Mon Jul 01 2019 Mikhail Efremov <sem@altlinux.org> 4.13.4-alt1
 - Updated to 4.13.4.
 
