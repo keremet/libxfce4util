@@ -1,4 +1,5 @@
 %def_enable introspection
+%def_enable vala
 
 Name: libxfce4util
 Version: 4.13.4
@@ -21,6 +22,7 @@ BuildPreReq: rpm-build-xfce4 xfce4-dev-tools
 # Automatically added by buildreq on Wed Jan 13 2010
 BuildRequires: glib2-devel gtk-doc intltool
 %{?_enable_introspection:BuildRequires: gobject-introspection-devel}
+%{?_enable_vala:BuildRequires: vala-tools}
 
 %define _unpackaged_files_terminate_build 1
 
@@ -58,6 +60,17 @@ Requires: %name-devel = %EVR
 GObject introspection devel data for %name.
 %endif
 
+%if_enabled vala
+%package vala
+Summary: Vala bindings for %name
+Group: System/Libraries
+Requires: %name-devel = %EVR
+BuildArch: noarch
+
+%description vala
+Vala bindings for %name.
+%endif
+
 %prep
 %setup
 
@@ -69,6 +82,7 @@ GObject introspection devel data for %name.
 	--disable-static \
 	--enable-maintainer-mode \
 	%{subst_enable introspection} \
+	%{subst_enable vala} \
 	--enable-gtk-doc \
 	--enable-debug=minimum
 %make_build
@@ -95,6 +109,11 @@ GObject introspection devel data for %name.
 
 %files gir-devel
 %_datadir/gir-1.0/*.gir
+%endif
+
+%if_enabled vala
+%files vala
+%_datadir/vala/vapi/%name-*
 %endif
 
 %changelog
