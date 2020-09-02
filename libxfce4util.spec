@@ -13,7 +13,7 @@ Url: https://www.xfce.org/
 
 Packager: Xfce Team <xfce@packages.altlinux.org>
 
-# Upstream: git://git.xfce.org/xfce/libxfce4util
+Vcs: https://gitlab.xfce.org/xfce/libxfce4util.git
 Source: %name-%version.tar
 
 BuildPreReq: rpm-build-xfce4 xfce4-dev-tools
