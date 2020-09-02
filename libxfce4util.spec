@@ -7,7 +7,7 @@ Release: alt1
 
 Summary: Utility library for the Xfce desktop environment
 Summary(ru_RU.UTF-8): Библиотека утилит для рабочего стола Xfce
-License: %lgpl2plus
+License: LGPLv2+
 Group: Graphical desktop/XFce
 Url: https://www.xfce.org/
 
@@ -15,8 +15,6 @@ Packager: Xfce Team <xfce@packages.altlinux.org>
 
 # Upstream: git://git.xfce.org/xfce/libxfce4util
 Source: %name-%version.tar
-
-BuildRequires(pre): rpm-build-licenses
 
 BuildPreReq: rpm-build-xfce4 xfce4-dev-tools
 # Automatically added by buildreq on Wed Jan 13 2010
