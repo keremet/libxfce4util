@@ -3,27 +3,26 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# enolp <enolp@softastur.org>, 2015,2020
-# Ḷḷumex03, 2014
-# Ḷḷumex03, 2014
+# Hayk Andreasyan <hayk.andreasyan@realschool.am>, 2019
+# Real School <localization@ehayq.am>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2020-03-16 01:17+0000\n"
-"Last-Translator: enolp <enolp@softastur.org>\n"
-"Language-Team: Asturian (http://www.transifex.com/xfce/libxfce4util/language/ast/)\n"
+"PO-Revision-Date: 2020-05-25 07:11+0000\n"
+"Last-Translator: Real School <localization@ehayq.am>\n"
+"Language-Team: Eastern Armenian (http://www.transifex.com/xfce/libxfce4util/language/hye/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ast\n"
+"Language: hye\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Fallu al crear el direutoriu «%s»: %s"
+msgstr "%s նշարանի ստեղծման սխալ․ %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
@@ -47,7 +46,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
+msgstr "Ծրագրի գործարկելի կամ ելակէտային ձեւի գործածումն ու վերամշակումը, փոփոխութեամբ կամ առանց դրանց, հաստատուում են տուեալ պայմանների կատարման դէպքում․\n\n1. Ելակէտային այլագրի վերամշակման դէպքում պէտք է պահել հեղինակային իրաւունքի վերաբերեալ նշումները, պայմանների այս ցուցակը եւ հետեւեալ զգուշացումը։\n2. Գործարկելի ձեւում պէտք է վերարտադրուեն հեղինակային իրաւունքի վերաբերեալ նշումները, պայմանների այս ցուցակը եւ փաստաթղթաւորման եւ/կամ այլ տարրերում պահուած հետեւեալ զգուշացումը։\n\n"
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
@@ -64,7 +63,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr ""
+msgstr "Սա անվճար ծրագրային ապահովում է։ Կարող էք վերամշակել եւ/կամ փոփոխել այն\nFree Software Foundation֊ի կողմից թողարկած GNU հանրային արտաւնագրի\nերկրորդ, կամ՝ (ըստ ձեր ցանկութեան) աւելի նոր տարբերակի համաձայն։\n\nԾրագիրը մշակուած է աւգտակար լինելու նպատակով, ՍԱԿԱՅՆ ԱՌԱՆՑ\nՈՐԵՒ ԵՐԱՇԽԻՔԻ, առանց նոյնիսկ ՎԱՃԱՌՔԻ որակի երաշխիքների կամ\nՅԱՏՈՒԿ ՆՊԱՏԱԿԻ ՀԱՄԱՐ ՊԻՏԱՆԵԼԻՈՒԹԵԱՆ։\nՅաւելեալ տեղեկոյթի համար կարող էք ուսումնասիրել GNU հանրային արտաւնագիրը։\n\nGNU հանրային արտաւնագրի պատճէնը\n\nպէտք է տրուած լինի այս ծրագրի հետ միասին, եթե ոչ, դիմէք՝ \n(Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA \n02110-1301, ԱՄՆ):\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -82,19 +81,19 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr ""
+msgstr "Սա ազատ ծրագրային ապահովում է։ Կարող էք վերամշակել եւ/կամ\nփոփոխել այն՝ Free Software Foundation֊ի կողմից\nթողարկած GNU հանրային արտաւնագրի երկրորդ, կամ՝ (ըստ ցանկութեան) աւելի նոր տարբերակի համաձայն։\nԳրադարանը մշակուած է աւգտակար լինելու նպատակով,\nսակայն ԱՌԱՆՑ ՈՐԵՒ ԵՐԱՇԽԻՔԻ, առանց նոյնիսկ վաճառքի\nորակի երաշխիքների կամ ՅԱՏՈՒԿ ՆՊԱՏԱԿԻ ՀԱՄԱՐ ՊԻՏԱՆԵԼԻՈՒԹեԱՆ։\nՅաւելեալ տեղեկոյթի համար կարող էք ուսումնասիրել GNU հանրային արտաւնագիրը։\nGNU հանրային արտաւնագրի պատճէնը\nպէտք է տրուած լինի ձեզ ծրագրի հետ միասին, եթե ոչ, դիմէք՝ \nFree Software Foundation` (Inc., 51 Franklin Street, Fifth Floor, Boston,\\n\"\n\"MA 02110-1301, ԱՄՆ):\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr "pipe() falló: %s"
+msgstr "pipe()֊ի ձախողում․ %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "Tien de llamase primero a xfce_posix_signal_handler_init()"
+msgstr "xfce_posix_signal_handler_init()֊ը պէտք է կանչուի առաջինը"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr "sigaction() falló: %s\n"
+msgstr "sigaction()֊ի ձախողում. %s\n"

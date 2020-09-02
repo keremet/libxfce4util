@@ -462,5 +462,122 @@ xfce_expand_variables (const gchar *command,
 
 
 
+void
+xfce_append_quoted (GString     *string,
+                    const gchar *unquoted)
+{
+  gchar *quoted;
+
+  quoted = g_shell_quote (unquoted);
+  g_string_append (string, quoted);
+  g_free (quoted);
+}
+
+
+
+/**
+ * xfce_expand_desktop_entry_field_codes:
+ * @command           : Input string (command to expand) or %NULL.
+ * @uri_list          : Input string list (filename/URL field) or %NULL.
+ * @icon              : Input string (icon field) or %NULL.
+ * @name              : Input string (name field) or %NULL.
+ * @uri               : Input string (URI field) or %NULL.
+ * @requires_terminal : Input boolean.
+ *
+ * Expands field codes in @command according to Freedesktop.org Desktop Entry Specification.
+ *
+ * Return value: %NULL on error, else the string, which should be freed using g_free() when
+ *               no longer needed.
+ **/
+gchar*
+xfce_expand_desktop_entry_field_codes (const gchar *command,
+                                       GSList      *uri_list,
+                                       const gchar *icon,
+                                       const gchar *name,
+                                       const gchar *uri,
+                                       gboolean     requires_terminal)
+{
+  const gchar *p;
+  gchar       *filename;
+  GString     *string;
+  GSList      *li;
+
+  if (G_UNLIKELY (command == NULL))
+    return NULL;
+
+  string = g_string_sized_new (strlen (command));
+
+  if (requires_terminal)
+    g_string_append (string, "exo-open --launch TerminalEmulator ");
+
+  for (p = command; *p != '\0'; ++p)
+    {
+      if (G_UNLIKELY (p[0] == '%' && p[1] != '\0'))
+        {
+          switch (*++p)
+            {
+            case 'f':
+            case 'F':
+              for (li = uri_list; li != NULL; li = li->next)
+                {
+                  filename = g_filename_from_uri (li->data, NULL, NULL);
+                  if (G_LIKELY (filename != NULL))
+                    xfce_append_quoted (string, filename);
+                  g_free (filename);
+
+                  if (*p == 'f')
+                    break;
+                  if (li->next != NULL)
+                    g_string_append_c (string, ' ');
+                }
+              break;
+
+            case 'u':
+            case 'U':
+              for (li = uri_list; li != NULL; li = li->next)
+                {
+                  xfce_append_quoted (string, li->data);
+
+                  if (*p == 'u')
+                    break;
+                  if (li->next != NULL)
+                    g_string_append_c (string, ' ');
+                }
+              break;
+
+            case 'i':
+              if (! xfce_str_is_empty (icon))
+                {
+                  g_string_append (string, "--icon ");
+                  xfce_append_quoted (string, icon);
+                }
+              break;
+
+            case 'c':
+              if (! xfce_str_is_empty (name))
+                xfce_append_quoted (string, name);
+              break;
+
+            case 'k':
+              if (! xfce_str_is_empty (uri))
+                xfce_append_quoted (string, uri);
+              break;
+
+            case '%':
+              g_string_append_c (string, '%');
+              break;
+            }
+        }
+      else
+        {
+          g_string_append_c (string, *p);
+        }
+    }
+
+  return g_string_free (string, FALSE);
+}
+
+
+
 #define __XFCE_MISCUTILS_C__
 #include <libxfce4util/libxfce4util-aliasdef.c>

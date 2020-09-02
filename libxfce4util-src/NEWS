@@ -1,3 +1,28 @@
+4.15.3
+======
+- Version bump in preparation of 4.16pre1
+
+
+4.15.2
+======
+- Complete the field codes expansion
+
+
+4.15.1
+======
+- Add field codes expansion and related utilities (code moved from garcon)
+- docs: Show the "Miscellaneous Utilities" section
+- Add basic GitLab pipeline
+- Translation Updates:
+  Albanian, Armenian (Armenia), Asturian, Belarusian, Hindi, Italian,
+  Spanish, Uzbek
+
+4.15.0
+======
+- Bump the Xfce version to 4.15
+- Translation Updates:
+  Albanian, Galician, Spanish
+
 4.14.0
 ======
 
