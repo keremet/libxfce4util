@@ -1,0 +1,8 @@
+object bfbb51045e53eb45161434d761c7eaf3df3e2df2
+type commit
+tag libxfce4util-4.15.3
+tagger Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at> 1598563426 +0200
+
+4.15.3
+
+- Version bump in preparation of 4.16pre1
