@@ -1,0 +1,10 @@
+object 0b8985a00dc4dfecd8195c25001deef07722de56
+type commit
+tag libxfce4util-4.15.4
+tagger Andre Miranda <andre42m@gmail.com> 1604364317 -0300
+
+4.15.4
+
+- Create README.md
+- Translation Updates:
+  Albanian, Armenian, Hebrew, Slovak, Uyghur
