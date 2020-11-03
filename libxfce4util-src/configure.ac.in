@@ -13,7 +13,7 @@ dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [15])
-m4_define([libxfce4util_version_micro], [3])
+m4_define([libxfce4util_version_micro], [4])
 m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version_build], [@REVISION@])
 m4_define([libxfce4util_version_tag], [])
@@ -47,7 +47,7 @@ dnl ***************************
 dnl *** Initialize automake ***
 dnl ***************************
 LIBXFCE4UTIL_VERSION=libxfce4util_version()
-AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip])
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_MAINTAINER_MODE()
