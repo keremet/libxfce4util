@@ -1,9 +1,0 @@
-object 34860517fb64630a99daa39972cdf54dc1f17f8d
-type commit
-tag libxfce4util-4.15.5
-tagger Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at> 1605971782 +0100
-
-4.15.5
-
-- Bump Xfce version to 4.16pre2
-- Add README.md to EXTRA_DIST

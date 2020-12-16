@@ -1,0 +1,12 @@
+object f493060f23cc6ef7d175cc83dc872d0f5f778357
+type commit
+tag libxfce4util-4.15.6
+tagger Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at> 1607887793 +0100
+
+4.15.6
+
+- Update configure.ac.in syntax
+- Namespace of the gir needs capital first letter
+- Bump GLib (and gio, gthread, etc) minimum to 2.50.0
+- Remove typedef already defined by G_DECLARE_FINAL_TYPE macro
+  (Fixes #4)
