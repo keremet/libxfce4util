@@ -110,6 +110,16 @@ xfce_utf8_strndup
 <TITLE>File Utilities</TITLE>
 <FILE>xfce-fileutils</FILE>
 xfce_mkdirhier
+xfce_create_shared_thumbnail_path
+</SECTION>
+
+<SECTION>
+<TITLE>GIO Extensions</TITLE>
+<FILE>xfce-gio-extensions</FILE>
+xfce_g_file_metadata_is_supported
+xfce_g_file_create_checksum
+xfce_g_file_set_trusted
+xfce_g_file_is_trusted
 </SECTION>
 
 
@@ -139,6 +149,7 @@ xfce_gethostname
 xfce_expand_variables
 xfce_append_quoted
 xfce_expand_desktop_entry_field_codes
+xfce_unescape_desktop_entry_value
 </SECTION>
 
 
