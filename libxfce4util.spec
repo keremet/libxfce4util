@@ -2,8 +2,8 @@
 %def_enable vala
 
 Name: libxfce4util
-Version: 4.16.0
-Release: alt1
+Version: 4.17.2
+Release: alt999
 
 Summary: Utility library for the Xfce desktop environment
 Summary(ru_RU.UTF-8): Библиотека утилит для рабочего стола Xfce
@@ -115,6 +115,9 @@ Vala bindings for %name.
 %endif
 
 %changelog
+* Sat Aug 13 2022 Andrey Sokolov <keremet@altlinux.org> 4.17.2-alt999
+- Remove limit on the size of configuration file line - will be in 4.17.3
+
 * Wed Dec 23 2020 Mikhail Efremov <sem@altlinux.org> 4.16.0-alt1
 - Updated to 4.16.0.
 

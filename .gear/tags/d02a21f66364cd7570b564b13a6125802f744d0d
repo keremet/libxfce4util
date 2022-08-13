@@ -1,9 +1,0 @@
-object ea6c56a668cbd1055b0acaa65466fd163e02b651
-type commit
-tag libxfce4util-4.16.0
-tagger Romain Bouvier <skunnyk@alteroot.org> 1608668555 +0100
-
-4.16.0
-
-- Prepare for 4.16 final release
-- Properly handle URI schemes other than "file"
