@@ -18,7 +18,7 @@
  * MA 02110-1301 USA
  */
 
-#if !defined(LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
+#if !defined(_LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 
@@ -46,8 +46,7 @@ gchar*   xfce_str_replace            (const gchar *str,
  * Macro to check if a string is %NULL or empty. You should prefer
  * this function over strlen (str) == 0.
  *
- * Returns: %TRUE if the string is not %NULL and its length > 1,
- *          %FALSE otherwise.
+ * Returns: %TRUE if the string is %NULL or empty, %FALSE otherwise.
  *
  * Since : 4.17
  **/

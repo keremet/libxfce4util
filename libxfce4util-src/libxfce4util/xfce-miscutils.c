@@ -138,7 +138,7 @@ internal_get_file_r (const gchar *dir,
   g_return_val_if_fail(format != NULL, NULL);
   g_return_val_if_fail(len > 0, NULL);
 
-  if ((n = g_strlcpy(buffer, dir, len)) >= len)
+  if (g_strlcpy(buffer, dir, len) >= len)
     return NULL;
 
   if ((n = g_strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
@@ -172,8 +172,8 @@ xfce_version_string (void)
 /**
  * xfce_get_homedir:
  *
- * Similar to g_get_homedir() in functionality but will never return NULL.
- * While g_get_homedir() may return NULL under certain circumstances, this
+ * Similar to g_get_home_dir() in functionality but will never return NULL.
+ * While g_get_home_dir() may return NULL under certain circumstances, this
  * function is garantied to never ever return NULL, but always return a
  * valid character pointer with the absolute path to the user's home directory.
  *
@@ -467,7 +467,7 @@ xfce_expand_variables (const gchar *command,
 /**
  * xfce_append_quoted:
  * @string: A #GString.
- * @unqouted: A literal string.
+ * @unquoted: A literal string.
  *
  * An alias of xfce_g_string_append_quoted().
  *
