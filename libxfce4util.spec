@@ -73,8 +73,6 @@ Vala bindings for %name.
 %setup
 
 %build
-# Don't use git tag in version.
-%xfce4_drop_gitvtag libxfce4util_version_tag configure.ac.in
 %xfce4reconf
 %configure \
 	--disable-static \
