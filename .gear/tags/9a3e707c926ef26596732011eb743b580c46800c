@@ -1,0 +1,9 @@
+object b2e69aa5a18932f3a74bff7bdc785d182b7a5de2
+type commit
+tag libxfce4util-4.17.4
+tagger Gaël Bonithon <gael@xfce.org> 1669822950 +0100
+
+4.17.4
+
+- bump copyright to 2022
+- docs: Fix return value of xfce_str_replace()
