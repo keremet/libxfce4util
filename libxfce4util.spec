@@ -88,7 +88,7 @@ Vala bindings for %name.
 %find_lang %name
 
 %files -f %name.lang
-%doc AUTHORS README.md NEWS TODO
+%doc AUTHORS README.md NEWS
 %_libdir/*.so.*
 %_sbindir/*
 
