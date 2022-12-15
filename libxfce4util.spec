@@ -25,7 +25,8 @@ BuildRequires: glib2-devel gtk-doc intltool
 %define _unpackaged_files_terminate_build 1
 
 %description
-Basic utility non-GUI functions for Xfce.
+Libxfce4util is used to share commonly used non-GTK utilities among the
+Xfce applications.
 
 %description -l ru_RU.UTF-8
 Основные (не графические) утилиты Xfce.
