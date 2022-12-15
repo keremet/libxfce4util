@@ -9,7 +9,7 @@ Summary: Utility library for the Xfce desktop environment
 Summary(ru_RU.UTF-8): Библиотека утилит для рабочего стола Xfce
 License: LGPLv2+
 Group: Graphical desktop/XFce
-Url: https://www.xfce.org/
+Url: https://docs.xfce.org/xfce/libxfce4util/start
 
 Packager: Xfce Team <xfce@packages.altlinux.org>
 
