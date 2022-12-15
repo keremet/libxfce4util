@@ -10,12 +10,12 @@ dnl ***************************
 dnl *** Version information ***
 dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
-XDT_VERSION_INIT([4.17.4])
+XDT_VERSION_INIT([4.18.0])
 
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
 dnl **************************************************************
-m4_define([xfce_version_string], [4.18pre2])
+m4_define([xfce_version_string], [4.18])
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
 dnl # YOU ARE DOING.
@@ -98,17 +98,17 @@ XDT_I18N()
 dnl ***********************************
 dnl *** Check for GObject installed ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.56.0])
+XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.66.0])
 
 dnl ********************************
 dnl *** Check for GLib installed ***
 dnl ********************************
-XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.56.0])
+XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.66.0])
 
 dnl ********************************
 dnl *** Check for GIO installed ***
 dnl ********************************
-XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.56.0])
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.66.0])
 
 dnl *************************
 dnl *** Check for gtk-doc ***
