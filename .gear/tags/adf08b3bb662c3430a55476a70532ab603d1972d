@@ -1,8 +1,0 @@
-object 32d2db829d78c3f0573fe440a5250954fab5eda9
-type commit
-tag libxfce4util-4.18.0
-tagger Gaël Bonithon <gael@xfce.org> 1671094452 +0100
-
-4.18.0
-
-- build: Bump requirements for Xfce 4.18

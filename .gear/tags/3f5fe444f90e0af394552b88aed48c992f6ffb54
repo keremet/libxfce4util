@@ -1,0 +1,9 @@
+object 6b57c522f16d62cb89faa3762c84ac452070740a
+type commit
+tag libxfce4util-4.18.1
+tagger Andre Miranda <andreldm@xfce.org> 1673374871 +0100
+
+4.18.1
+
+- Handle remaining escape sequences
+- Fix desktop entry value escaping
