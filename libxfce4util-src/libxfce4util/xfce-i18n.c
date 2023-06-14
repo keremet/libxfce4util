@@ -474,11 +474,16 @@ xfce_get_path_localized (gchar       *dst,
  * Since: 4.2
  **/
 guint
-xfce_locale_match (const gchar *locale1,
-                   const gchar *locale2)
+xfce_locale_match (const gchar *in_locale1,
+                   const gchar *in_locale2)
 {
-  g_return_val_if_fail (locale1 != NULL, XFCE_LOCALE_NO_MATCH);
-  g_return_val_if_fail (locale2 != NULL, XFCE_LOCALE_NO_MATCH);
+  g_return_val_if_fail (in_locale1 != NULL, XFCE_LOCALE_NO_MATCH);
+  g_return_val_if_fail (in_locale2 != NULL, XFCE_LOCALE_NO_MATCH);
+
+  for (int k = 3;;k=0)
+  {
+  const gchar *locale1 = in_locale1;
+  const gchar *locale2 = in_locale2;
 
   while (*locale1 == *locale2 && *locale1 != '\0')
     {
@@ -497,13 +502,19 @@ xfce_locale_match (const gchar *locale1,
     {
       switch (*locale1)
         {
-          case '@': return XFCE_LOCALE_NO_MATCH + 3;
-          case '.': return XFCE_LOCALE_NO_MATCH + 2;
-          case '_': return XFCE_LOCALE_NO_MATCH + 1;
+          case '@': return XFCE_LOCALE_NO_MATCH + 3 + k;
+          case '.': return XFCE_LOCALE_NO_MATCH + 2 + k;
+          case '_': return XFCE_LOCALE_NO_MATCH + 1 + k;
         }
 
       /* FALL-THROUGH */
     }
+
+  if (strncmp(in_locale1, "mhr_RU", 6) != 0)
+    break;
+
+  in_locale1 = "ru_RU.UTF-8";
+  }
 
   return XFCE_LOCALE_NO_MATCH;
 }
